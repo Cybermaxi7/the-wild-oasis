@@ -13,7 +13,7 @@ const Table = styled.div`
 const TableHeader = styled.header`
     display: grid;
     grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-    column-gap: 2.4rem;
+    column-gap: 2.4rem; 
     align-items: center;
 
     background-color: var(--color-grey-50);
