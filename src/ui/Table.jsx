@@ -80,8 +80,8 @@ function Row({ children }) {
   </StyledRow>
 }
 function Body({ data, render }) {
-  if(!data.length) return <Empty>There is no data to show at the moment</Empty>
-  return <StyledBody>{data.map(render)}</StyledBody>
+  if(!data?.length) return <Empty>There is no data to show at the moment</Empty>
+  return <StyledBody>{data?.map(render)}</StyledBody>
 }
 // function Footer() {}
 
@@ -89,3 +89,4 @@ Table.Header = Header;
 Table.Row = Row;
 Table.Body = Body;
 Table.Footer = Footer;
+Table.shouldForwardProp = (prop) => prop !== 'columns';
