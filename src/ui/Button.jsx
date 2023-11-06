@@ -50,8 +50,8 @@ const variations = {
 
 const Button = styled.button`
     border: none;
-    width: auto;
-    align-self: flex-start;
+    /* width: auto; */
+    /* align-self: flex-start; */
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-sm);
 
