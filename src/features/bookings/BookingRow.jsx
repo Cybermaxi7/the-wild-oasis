@@ -4,10 +4,11 @@ import styled from "styled-components";
 import Table from "../../ui/Table";
 import Tag from "../../ui/Tag";
 
-import { HiArrowDownOnSquare, HiEye } from "react-icons/hi2";
+import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import Menus from "../../ui/Menus";
 import { formatCurrency, formatDistanceFromNow } from "../../utils/helpers";
+import { useCheckout } from "../check-in-out/useCheckout";
 
 const Cabin = styled.div`
     font-size: 1.6rem;
@@ -56,7 +57,7 @@ function BookingRow({
         "checked-out": "silver",
     };
     const navigate = useNavigate();
-
+    const {checkout, isCheckingOut} = useCheckout()
     return (
         <Table.Row>
             <Cabin>{cabinName}</Cabin>
@@ -91,14 +92,23 @@ function BookingRow({
                     >
                         View
                     </Menus.Button>
-                    { status === "unconfirmed" && 
+                    {status === "unconfirmed" && (
                         <Menus.Button
                             icon={<HiArrowDownOnSquare />}
                             onClick={() => navigate(`/checkin/${bookingId}`)}
                         >
                             Check in
                         </Menus.Button>
-                    }
+                    )}
+                    {status === "checked-in" && (
+                        <Menus.Button
+                            icon={<HiArrowUpOnSquare />}
+                            onClick={() => checkout(bookingId)}
+                            disabled={isCheckingOut}
+                        >
+                            Check out
+                        </Menus.Button>
+                    )}
                     {/* <Menus.Button
             icon={<HiEllipsisVertical />}
             onClick={() => window.location.href = `/admin/bookings/${bookingId}/delete`}
