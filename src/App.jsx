@@ -15,6 +15,7 @@ import Users from "./pages/Users";
 import GlobalStyles from "./styles/GlobalStyles";
 import Applayout from "./ui/Applayout";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 const queryClient = new QueryClient({
     defaultOptions: { queries: { staleTime: 0 } },
@@ -22,7 +23,8 @@ const queryClient = new QueryClient({
 
 export default function App() {
     return (
-        <QueryClientProvider client={queryClient}>
+        <DarkModeProvider>
+            <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools initialIsOpen={false} />
             <GlobalStyles />
             <BrowserRouter>
@@ -74,5 +76,6 @@ export default function App() {
                 }}
             />
         </QueryClientProvider>
+        </DarkModeProvider>
     );
 }
