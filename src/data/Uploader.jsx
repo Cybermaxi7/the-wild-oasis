@@ -126,6 +126,7 @@ function Uploader() {
   }
 
   return (
+  
     <div
       style={{
         marginTop: "auto",
@@ -138,6 +139,7 @@ function Uploader() {
         gap: "8px",
       }}
     >
+    <h6 style={{color: "#374151"}}>Dev Purpose Only!!!</h6>
       <h3 style={{color: "#374151"}}>SAMPLE DATA</h3>
 
       <Button onClick={uploadAll} disabled={isLoading}>
@@ -148,6 +150,7 @@ function Uploader() {
         Upload bookings ONLY
       </Button>
     </div>
+    
   );
 }
 

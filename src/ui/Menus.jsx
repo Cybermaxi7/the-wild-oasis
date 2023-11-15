@@ -8,6 +8,8 @@ const Menu = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    flex-direction: column;
+    gap: 3rem; 
 `;
 
 const StyledToggle = styled.button`
@@ -85,6 +87,7 @@ export default function Menus({ children }) {
 function Toggle({ id }) {
     const { openId, close, open, setPosition } = useContext(MenuContext);
     function handleClick(e) {
+        e.stopPropagation();
         const rect = e.target.closest("button").getBoundingClientRect();
         setPosition({
             x: window.innerWidth - rect.width - rect.x,
@@ -100,7 +103,11 @@ function Toggle({ id }) {
 }
 function List({ id, children,  }) {
   const{close} = useContext(MenuContext);
-  const ref = useOutsideClick(close);
+  const ref = useOutsideClick(close, false);
+//   const ref = useOutsideClick(() => {
+//     console.log("clicked")
+//     close
+//   }, false);
     const { openId, position } = useContext(MenuContext);
     if (openId !== id) return null;
     return createPortal(

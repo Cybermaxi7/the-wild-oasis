@@ -66,6 +66,6 @@ Button.defaultProps = {
     variation: "primary",
     size: "medium",
 };
-Button.shouldForwardProp = (prop) => prop !== 'variation';
+Button.shouldForwardProp = (prop) => prop !== "variation";
 
 export default Button;

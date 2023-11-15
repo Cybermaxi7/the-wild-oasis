@@ -16,7 +16,6 @@ export default function ProtectedRoute({ children }) {
     // 1. Load authenticated user
     const { isLoading, isAuthenticated } = useUser();
     // 2. If there is no authenticated user, redirect to login page
-    console.log(isAuthenticated)
     useEffect(function () {
         if (!isAuthenticated && !isLoading) navigate("/login");
     }, [isAuthenticated, isLoading, navigate]);
